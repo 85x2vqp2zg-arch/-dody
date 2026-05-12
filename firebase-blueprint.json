@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "Message": {
+      "title": "Message",
+      "description": "A chat message",
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" },
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "email": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "room": { "type": "string" }
+      },
+      "required": ["text", "uid", "displayName", "timestamp", "room"]
+    },
+    "Room": {
+      "title": "Room",
+      "description": "A chat room",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "createdBy": { "type": "string" }
+      },
+      "required": ["name"]
+    },
+    "User": {
+      "title": "User",
+      "description": "User profile",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "username": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "isBanned": { "type": "boolean" },
+        "isMuted": { "type": "boolean" },
+        "isVip": { "type": "boolean" },
+        "membership": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["displayName", "username", "email"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Admin record",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" }
+      }
+    },
+    "SystemHealth": {
+      "title": "SystemHealth",
+      "description": "Health check document",
+      "type": "object",
+      "properties": {
+        "status": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/rooms/{roomId}/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Messages within a specific room"
+    },
+    "/rooms/{roomId}": {
+      "schema": "Room",
+      "description": "Chat room metadata"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/admins/{userId}": {
+      "schema": "Admin",
+      "description": "Admin list"
+    },
+    "/system/health": {
+      "schema": "SystemHealth",
+      "description": "Health check"
+    }
+  }
+}
