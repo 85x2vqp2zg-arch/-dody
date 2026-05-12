@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /admin
-Disallow: /private-chat
-
-Sitemap: https://dody-a3a0f.web.app/sitemap.xml
