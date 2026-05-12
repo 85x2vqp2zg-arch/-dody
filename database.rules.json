@@ -1,0 +1,55 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "users": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "$uid === auth.uid || auth.token.email === 'lm656508@gmail.com'",
+        ".validate": "newData.hasChildren(['displayName', 'username'])",
+        "membership": {
+          ".validate": "auth.token.email === 'lm656508@gmail.com' || (!newData.exists() || data.val() === newData.val())"
+        },
+        "isVip": {
+          ".validate": "auth.token.email === 'lm656508@gmail.com' || (!newData.exists() || data.val() === newData.val())"
+        },
+        "isBanned": {
+          ".validate": "auth.token.email === 'lm656508@gmail.com' || (!newData.exists() || data.val() === newData.val())"
+        }
+      }
+    },
+    "rooms": {
+      "$room": {
+        "messages": {
+          ".read": "auth != null",
+          ".write": "auth != null && auth.token.email_verified == true",
+          "$message": {
+            ".validate": "newData.hasChildren(['text', 'uid', 'timestamp']) && newData.child('uid').val() === auth.uid"
+          }
+        },
+        "entry_events": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        }
+      }
+    },
+    "user_dms": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "chats": {
+      "$chatId": {
+        ".read": "data.child('participants').child(auth.uid).exists()",
+        ".write": "data.child('participants').child(auth.uid).exists() || !data.exists()"
+      }
+    },
+    "blocks": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}

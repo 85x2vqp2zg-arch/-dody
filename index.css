@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
+
+  --color-sophisticated-dark: #05070a;
+  --color-sophisticated-sidebar: #0a0f18;
+  --color-sophisticated-gold: #f59e0b;
+  --color-sophisticated-gold-muted: #78350f;
+  --color-sophisticated-blue: #1e3a8a;
+}
+
+@layer base {
+  body {
+    @apply bg-sophisticated-dark text-white font-sans;
+  }
+}
+
+.glass-panel {
+  background: rgba(10, 15, 24, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(120, 53, 15, 0.3);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(to right, #f59e0b, #fef3c7, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes gold-shine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-gold-tag {
+  background: linear-gradient(90deg, #d4af37, #f7ef8a, #d4af37, #f7ef8a);
+  background-size: 300% 300%;
+  animation: gold-shine 4s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+.neon-gold-glow {
+  color: #ffaa00;
+  text-shadow: 0 0 10px rgba(255, 170, 0, 0.4);
+  font-weight: 700;
+}
+
+.neon-green-glow {
+  color: #39ff14;
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+  font-weight: 700;
+}
+
+.neon-red-glow {
+  color: #ff0000;
+  text-shadow: 0 0 12px rgba(255, 0, 0, 0.5);
+  font-weight: 700;
+}
+
+.sent-bubble {
+  background: linear-gradient(to bottom right, #1e3a8a, #1e1b4b);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.received-bubble {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}

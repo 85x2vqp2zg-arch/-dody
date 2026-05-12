@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private-chat
+
+Sitemap: https://ais-pre-mjmes2bnjlrr3eeust5nss-737817258666.europe-west2.run.app/sitemap.xml
